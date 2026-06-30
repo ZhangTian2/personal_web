@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/17292/Desktop/¸öÈËÍøÒ³old/**)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  }
+}
