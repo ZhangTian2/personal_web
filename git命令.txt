@@ -11,7 +11,7 @@ git commit -m "Initial commit"
 git remote add origin git@github.com:ZhangTian2/personal_web.git
 
 # 5. 推送到GitHub
-git push -u origin main
+git push -u origin master
 
 
 以后每次提交代码，就不用再敲那么多行了。我们只要记住下面这几个命令
