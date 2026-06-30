@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙的个人博客</title>
+    <link rel="shortcut icon" href="icon.ico">
+    <style>
+        a {
+            color: blue; /* 设置超链接的默认颜色为黑色 */
+        }
+        .container {
+            display: flex;
+            height: 45px;
+        }
+        .container2 {
+            display: flex;
+            height: 390px;
+        }
+        .column {
+            width: 20%;
+            padding: 5px;
+            box-sizing: border-box;
+            text-align: center;
+            /* bottom: 1px solid black; */
+            border: 1px solid black;
+        }
+        .list_container {
+            display: flex;
+        }
+        .list {
+            width: 25%;
+        }
+        .math {
+            background-color: white;
+            color: #002fa7;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .physics {
+            background-color: #20a162;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .spintronics {
+            background-color: white;
+            color: #fa8c35;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .magnons {
+            background-color: white;
+            color: #c21f30;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .others {
+            background-color: white;
+            color: #8076a3;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .math:hover {
+            background-color: #002fa7;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .physics:hover {
+            background-color: #20a162;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .spintronics:hover {
+            background-color: #fa8c35;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .magnons:hover {
+            background-color: #c21f30;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .others:hover {
+            background-color: #8076a3;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .bottom_bar {
+            display: flex;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+        .bottom_bar_line1 {
+            width: 50px;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+        .bottom_bar_line2 {
+            width: 205px;
+            height: 50px;
+            box-sizing: border-box;
+            text-align: left;
+            /* bottom: 1px solid black; */
+        }
+        .bottom_bar_line2_1 {
+            background-color: white;
+            display: flex;
+            width: 220px;
+            height: 50%;
+            box-sizing: border-box;
+            text-align: right;
+            /* bottom: 1px solid black; */
+        }
+        .bottom_bar_line2_1_1 {
+            height: 20px;
+            width: 50%;
+            box-sizing: border-box;
+            text-align: left;
+            /* bottom: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="column math" >数学</a>
+        <a href="physics.html" class="column physics" >物理学</a>
+        <!-- <a href="spintronics.html" class="column spintronics" >自旋电子学</a>
+        <a href="magnonics.html" class="column magnons" >磁子学</a> -->
+        <a href="others.html" class="column others" >其它</a>
+    </div>
+    <br>
+    <div class="container2">
+        <div class="list">
+            <ul>
+                <li><a href="physics_1.pdf" target="_blank">1-10</a><br>
+                    常见晶体结构<br>
+                    为什么光刻间要用黄光灯?<br>
+                    反铁磁的优点和缺点;<br>
+                    位错和晶界的区别;<br>
+                    波长 1m 的电磁波对应的能量 E， 频率\(\gamma\);<br>
+                    <!-- 一些常用物理量用格林函数表达式;<br>
+                    热浴(heat bath);<br>
+                    谱函数;<br>
+                    数值孔径;<br>
+                    密度矩阵能写成\(<\hat{b}_{i}^{\dagger}\hat{b}_{j}>\)的形式;<br>
+                    相空间不可压缩;<br>
+                    玻尔兹曼方程中碰撞项的形成;</li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="bottom_bar">
+        <img src="2024.jpg" alt="图片" class = "bottom_bar_line1"> &nbsp &nbsp
+        <div class = "bottom_bar_line2">
+            <div class = "bottom_bar_line2_1">个人博客，记录学习和生活</div>
+            <div class = "bottom_bar_line2_1">
+                <div class = "bottom_bar_line2_1_1">农历甲辰年</div>
+                <div id="date" class = "bottom_bar_line2_1_1"></div>  
+                <script>
+                    document.getElementById('date').innerHTML = new Date().toLocaleDateString();  
+                </script>
+            </div>
+            <!-- <div class = "bottom_bar_line2_1_1">农历甲辰年</div> -->
+        </div>
+    </div>
+</body>
+</html>

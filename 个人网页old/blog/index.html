@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙的个人博客</title>
+    <link rel="shortcut icon" href="icon.ico">
+    <style>
+        a {
+            color: blue; /* 设置超链接的默认颜色为黑色 */
+        }
+        .container {
+            display: flex;
+            height: 45px;
+        }
+        .container2 {
+            display: flex;
+            height: 390px;
+        }
+        .column {
+            width: 20%;
+            padding: 5px;
+            box-sizing: border-box;
+            text-align: center;
+            /* bottom: 1px solid black; */
+            border: 1px solid black;
+        }
+        .list_container {
+            display: flex;
+        }
+        .list {
+/*             width: 25%; */
+        }
+        .math {
+            background-color: #002fa7;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .physics {
+            background-color: white;
+            color: #20a162;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .spintronics {
+            background-color: white;
+            color: #fa8c35;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .magnons {
+            background-color: white;
+            color: #c21f30;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .others {
+            background-color: white;
+            color: #8076a3;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .math:hover {
+            background-color: #002fa7;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .physics:hover {
+            background-color: #20a162;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .spintronics:hover {
+            background-color: #fa8c35;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .magnons:hover {
+            background-color: #c21f30;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .others:hover {
+            background-color: #8076a3;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .bottom_bar {
+            display: flex;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+        .bottom_bar_line1 {
+            width: 50px;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+        .bottom_bar_line2 {
+            width: 205px;
+            height: 50px;
+            box-sizing: border-box;
+            text-align: left;
+            /* bottom: 1px solid black; */
+        }
+        .bottom_bar_line2_1 {
+            background-color: white;
+            display: flex;
+            width: 220px;
+            height: 50%;
+            box-sizing: border-box;
+            text-align: right;
+            /* bottom: 1px solid black; */
+        }
+        .bottom_bar_line2_1_1 {
+            height: 20px;
+            width: 50%;
+            box-sizing: border-box;
+            text-align: left;
+            /* bottom: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div class="container2">
+        <div class="list">
+        <li><a href="朝花夕拾物理学.pdf" target="_blank">2021-朝花夕拾物理学</a><br></li>
+        <li><a href="半无限长金属导线自能的计算方法.pdf" target="_blank" >20221201-半无限长金属导线自能的计算方法</a><br></li>
+        <li><a href="非平衡格林函数理论.pdf" target="_blank">20230117-非平衡格林函数理论</a><br></li>
+        <li><a href="磁性材料参数.pdf" target="_blank">2023-磁性材料参数</a><br></li>
+        <li><a href="差不多男人.pdf" target="_blank">20240309-差不多男人</a><br></li>
+        </div>
+
+    </div>
+    <div class="bottom_bar">
+        <img src="2024.jpg" alt="图片" class = "bottom_bar_line1"> &nbsp &nbsp
+        <div class = "bottom_bar_line2">
+            <div class = "bottom_bar_line2_1">个人博客，记录学习和生活</div>
+            <div class = "bottom_bar_line2_1">
+                <div class = "bottom_bar_line2_1_1">农历甲辰年</div>
+                <div id="date" class = "bottom_bar_line2_1_1"></div>  
+                <script>
+                    document.getElementById('date').innerHTML = new Date().toLocaleDateString();  
+                </script>
+            </div>
+            <!-- <div class = "bottom_bar_line2_1_1">农历甲辰年</div> -->
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- 
+    宝蓝，翠绿，橙色，枫叶红position: fixed;
+            bottom: 0;
+ -->

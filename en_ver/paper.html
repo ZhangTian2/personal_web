@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tianyi Zhang - Publications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../个人网页old/website/icon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-ul');
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Nav link click handling
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>Tianyi Zhang</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li class="nav-ul-li-active"><a href="paper.html">Publications</a></li>
+                    <li><a href="report.html">Talks</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li class="lang-switch"><a href="../paper.html" title="切换到中文">中</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+        <section class="content-section">
+            <div class="section-header">
+                <h3 class="section-title">Publications</h3>
+            </div>
+            <div class="section-content">
+                <div style="font-size: 20px;font-weight:bold; color:#1D3897;margin-bottom: 15px;">2025</div>
+                <p style="margin-bottom: 10px; line-height: 1.8;">8. <b>Zhang Tianyi</b>, Wan Caihua and Han Xiufeng. Predictive indicator of critical point in equilibrium and nonequilibrium magnetic systems. <a href="https://doi.org/10.1103/81nz-k6tb" target="_blank">Phys. Rev. Lett. Accepted (2025).</a></p>
+                <p style="margin-bottom: 10px; line-height: 1.8;">7. <b>Zhang Tianyi</b>, Wan Caihua and Han Xiufeng. In-plane magnon valve effect in magnetic insulator–heavy metal–magnetic insulator device. <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.014427" target="_blank">Phys. Rev. B 111, 014427 (2025).</a></p>
+
+                <div style="font-size: 20px;font-weight:bold; color:#1D3897;margin:20px 0 15px;">2024</div>
+                <p style="margin-bottom: 10px; line-height: 1.8;">6. Wenqing He*; <b>Tianyi Zhang*</b>; Yongjian Zhou; Caihua Wan; Hao Wu; Baoshan Cui; Jihao Xia; Ran Zhang; Tengyu Guo; Peng Chen et al.. Electrical switching of the perpendicular Néel order in a collinear antiferromagnet. <a href="https://doi.org/10.1038/s41928-024-01248-3" target="_blank">Nature Electronics 7, 975–983 (2024).</a></p>
+                <p style="margin-bottom: 10px; line-height: 1.8;">5. Yichi Zhang; Hui Zhang; Xiuxia Wang; Yiheng Wang; Yuchen Liu; Shu Li; <b>Tianyi Zhang</b>; Chuang Fan; Changgan Zeng. Magnetic-field tuning of the Casimir force. <a href="https://doi.org/10.1038/s41567-024-02521-0" target="_blank">Nature Physics 20, 1282–1287 (2024).</a></p>
+                <p style="margin-bottom: 10px; line-height: 1.8;">4. Xiu-Feng Han; Hao Wu; <b>Tianyi Zhang</b>. Magnonics: Materials, physics, and devices. <a href="https://doi.org/10.1063/5.0216094" target="_blank">Applied Physics Letters 125, 020501 (2024).</a></p>
+                <p style="margin-bottom: 10px; line-height: 1.8;">3. Yi Zhan Wang; <b>T. Y. Zhang</b>; J. Dong; P. Chen; G. Q. Yu; C. H. Wan; Xiu-Feng Han. Voltage-Controlled Magnon Transistor via Tuning Interfacial Exchange coupling. <a href="https://doi.org/10.1103/physrevlett.132.076701" target="_blank">Phys. Rev. Lett. 132, 076701 (2024).</a></p>
+
+                <div style="font-size: 20px;font-weight:bold; color:#1D3897;margin:20px 0 15px;">2023</div>
+                <p style="margin-bottom: 10px; line-height: 1.8;">2. <b>Zhang Tianyi</b> and Han Xiufeng. Full quantum theory for magnon transport in two-sublattice magnetic insulators and magnon junctions. <a href="https://doi.org/10.1103/PhysRevB.108.104421" target="_blank">Phys. Rev. B 108, 104421 (2023).</a></p>
+                <p style="margin-bottom: 10px; line-height: 1.8;">1. <b>Zhang Tianyi</b>, Wan Caihua, Han Xiufeng. Threshold current of field-free perpendicular magnetization switching using anomalous spin-orbit torque. <a href="https://journals.aps.org/prb/pdf/10.1103/PhysRevB.108.014432" target="_blank">Phys. Rev. B 108, 014432 (2023).</a></p>
+
+                <div style="font-size: 20px;font-weight:bold; color:#1D3897;margin:20px 0 15px;">2020</div>
+                <p style="margin-bottom: 10px; line-height: 1.8;">0. Zheng-Yuan Zhang, <b>Tian-Yi Zhang</b>, ZongKai Liu, Dong-Sheng Ding, and Bao-Sen Shi. Research progress of rydberg manybody interaction. <a href="https://wulixb.iphy.ac.cn/pdf-content/10.7498/aps.69.20200649.pdf" target="_blank">Acta Physica Sinica, 69(18), (2020).</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container">
+    </footer>
+</body>
+</html>

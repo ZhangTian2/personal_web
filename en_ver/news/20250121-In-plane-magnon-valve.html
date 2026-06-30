@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - In-plane magnon valve effect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../../个人网页old/website/icon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-ul');
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>Tianyi Zhang</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../research.html">Research</a></li>
+                    <li><a href="../paper.html">Publications</a></li>
+                    <li><a href="../report.html">Talks</a></li>
+                    <li class="nav-ul-li-active"><a href="../news.html">News</a></li>
+                    <li class="lang-switch"><a href="../../news/20250121-In-plane-magnon-valve.html" title="切换到中文">中</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <div class="section-header">
+                <h3 class="section-title">News Detail</h3>
+            </div>
+            <div class="section-content">
+                <span class="news-date" style="margin-bottom: 10px; display: inline-block;">2025/01/21</span>
+                <h2 style="color: var(--primary-dark); margin-bottom: 20px; font-size: 1.5rem;">In-plane magnon valve effect in magnetic insulator–heavy metal–magnetic insulator device</h2>
+                <p style="font-size: 1.05rem; line-height: 1.9; text-align: justify;">
+                    Our paper "In-plane magnon valve effect in magnetic insulator–heavy metal–magnetic insulator device" has been published in <strong>Physical Review B</strong> on January 21, 2025. This study discovers the in-plane magnon valve effect in magnetic insulator–heavy metal–magnetic insulator heterostructures, providing a new physical mechanism for the development of magnonic devices.
+                </p>
+                <p style="margin-top: 16px;">
+                    <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.014427" target="_blank" style="color: var(--primary);">
+                        <i class="fas fa-external-link-alt"></i> View full paper
+                    </a>
+                </p>
+                <p style="margin-top: 20px;">
+                    <a href="../news.html" style="color: var(--primary);">&larr; Back to News</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+    </footer>
+</body>
+</html>

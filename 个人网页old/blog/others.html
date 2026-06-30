@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙的个人博客</title>
+    <link rel="shortcut icon" href="icon.ico">
+    <style>
+        a {
+            color: blue; /* 设置超链接的默认颜色为黑色 */
+        }
+        .container {
+            display: flex;
+            height: 45px;
+        }
+        .container2 {
+            display: flex;
+            height: 390px;
+        }
+        .column {
+            width: 20%;
+            padding: 5px;
+            box-sizing: border-box;
+            text-align: center;
+            /* bottom: 1px solid black; */
+            border: 1px solid black;
+        }
+        .list_container {
+            display: flex;
+        }
+        .list {
+            width: 30%;
+        }
+        .math {
+            background-color: white;
+            color: #002fa7;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .physics {
+            background-color: white;
+            color: #20a162;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .spintronics {
+            background-color: white;
+            color: #fa8c35;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .magnons {
+            background-color: white;
+            color: #c21f30;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 20px;           
+        }
+        .others {
+            background-color: #8076a3;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .math:hover {
+            background-color: #002fa7;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .physics:hover {
+            background-color: #20a162;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .spintronics:hover {
+            background-color: #fa8c35;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .magnons:hover {
+            background-color: #c21f30;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .others:hover {
+            background-color: #8076a3;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .bottom_bar {
+            display: flex;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+        .bottom_bar_line1 {
+            width: 50px;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+        .bottom_bar_line2 {
+            width: 205px;
+            height: 50px;
+            box-sizing: border-box;
+            text-align: left;
+            /* bottom: 1px solid black; */
+        }
+        .bottom_bar_line2_1 {
+            background-color: white;
+            display: flex;
+            width: 220px;
+            height: 50%;
+            box-sizing: border-box;
+            text-align: right;
+            /* bottom: 1px solid black; */
+        }
+        .bottom_bar_line2_1_1 {
+            height: 20px;
+            width: 50%;
+            box-sizing: border-box;
+            text-align: left;
+            /* bottom: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="column math" >数学</a>
+        <a href="physics.html" class="column physics" >物理学</a>
+        <!-- <a href="spintronics.html" class="column spintronics" >自旋电子学</a>
+        <a href="magnonics.html" class="column magnons" >磁子学</a> -->
+        <a href="others.html" class="column others" >其它</a>
+    </div>
+    <br>
+    <!-- <div class="container2">
+        <div class="list">
+            <ul><b>学习笔记</b>
+                <li>
+                <a href="others/1_10.pdf" target="_blank">1-10</a><br>
+                互补色;<br>
+                matlab文字云图的制作方法;<br>
+                路径中“./”、“../”、“/”代表的含义;<br>
+                Co. Ltd的意思;<br>
+                修改host进入GitHub网页的原理和方法;<br>
+                大脑皮层;<br>
+                python语言中对变量操作，有的加点，有的加点和括号，这两种方法有什么区别？;<br>
+                Matlab中的cell(单元数组);<br>
+                Matlab中的struct(结构体);<br>
+                </li>
+            </ul>
+        </div>
+        <div class="list">
+            <ul><b>学习资料</b>
+                <li><a href="others/1.pdf" target="_blank" >半无限长金属导线自能的计算方法</a><br></li>
+                <li><a href="others/2.pdf" target="_blank">非平衡格林函数理论</a><br></li>
+                <li><a href="others/磁性材料参数.pdf" target="_blank">磁性材料参数</a><br></li>
+                <li><a href="others/朝花夕拾物理学.pdf" target="_blank">朝花夕拾物理学</a><br></li>
+                <li><a href="others/毛选.pdf" target="_blank">毛选</a><br></li>
+            </ul>
+        </div>
+        <div class="list">
+            <ul><b>心得感想</b>
+                <li><a href="others/20231231.html" target="_blank">百花齐放春满园(2023/12/31)</a><br></li>
+                <li><a href="others/2023.png" target="_blank">2023年度总结文字云图</a><br></li>
+                <li><a href="others/20240114.html" target="_blank">新现象和规律的涌现来源于种类多样性而不是巨大的数量堆叠(2024/01/14)</a><br></li>
+                <li><a href="others/20240128.html" target="_blank">有花堪折直须折，莫待无花空折枝(2024/01/28)</a><br></li>
+                <li><a href="others/20240309.html" target="_blank">差不多男人(2024/03/09)</a><br></li>
+            </ul>
+        </div> 
+    </div> -->
+
+
+    <div class="bottom_bar">
+        <img src="2024.jpg" alt="图片" class = "bottom_bar_line1"> &nbsp &nbsp
+        <div class = "bottom_bar_line2">
+            <div class = "bottom_bar_line2_1">个人博客，记录学习和生活</div>
+            <div class = "bottom_bar_line2_1">
+                <div class = "bottom_bar_line2_1_1">农历甲辰年</div>
+                <div id="date" class = "bottom_bar_line2_1_1"></div>  
+                <script>
+                    document.getElementById('date').innerHTML = new Date().toLocaleDateString();  
+                </script>
+            </div>
+            <!-- <div class = "bottom_bar_line2_1_1">农历甲辰年</div> -->
+        </div>
+    </div>
+</body>
+</html>

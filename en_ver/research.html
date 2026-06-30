@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tianyi Zhang - Research</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../个人网页old/website/icon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-ul');
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Nav link click handling
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>Tianyi Zhang</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-ul-li-active"><a href="research.html">Research</a></li>
+                    <li><a href="paper.html">Publications</a></li>
+                    <li><a href="report.html">Talks</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li class="lang-switch"><a href="../research.html" title="切换到中文">中</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+        <section class="content-section">
+            <div class="section-header">
+                <h3 class="section-title">Research</h3>
+            </div>
+
+            <div class="section-content">
+
+                <!-- Research Direction 1 -->
+                <div class="research-row">
+                    <div class="research-image">
+                        <img src="../r1.png" alt="Spin Dynamics">
+                    </div>
+                    <div class="research-text">
+                        <div class="news-date" style="font-size: 1.3rem; margin-bottom: 12px;">Direction 1. Spin Dynamics Analysis</div>
+                        <p class="news-text">
+                            I conduct theoretical research on magnetization dynamics and magnon transport in magnetic systems, focusing on magnetic-field- and spin-torque-driven <strong>precession</strong>, <strong>nutation</strong>, and <strong>switching</strong> of magnetic moments, as well as <strong>magnon transport</strong> mechanisms. By constructing theoretical models of spin dynamics and quantum transport, I explore the intrinsic connection between magnetization dynamics and magnon transport, develop methods for predicting critical points in complex magnetic systems, and investigate their potential applications in novel <strong>magnetic memory</strong> and <strong>magnetic sensing</strong> devices.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Research Direction 2 -->
+                <div class="research-row">
+                    <div class="research-image">
+                        <img src="../r2.png" alt="Neural Network Emergence">
+                    </div>
+                    <div class="research-text">
+                        <div class="news-date" style="font-size: 1.3rem; margin-bottom: 12px;">Direction 2. Emergence in Neural Networks</div>
+                        <p class="news-text">
+                            I study emergence phenomena and their physical mechanisms in complex intelligent systems, investigating the intrinsic connection between <strong>abrupt performance changes in neural networks</strong> and <strong>nonlinear phase transitions</strong>. Using statistical physics methods such as order parameters and critical exponents, I analyze the critical behavior and capability emergence of models like Hopfield networks and Transformers during scaling. By integrating bistability and phase transition dynamics in nonlinear magnetic subsystems, I explore universal physical mechanisms underlying intelligent emergence. This research contributes to a deeper understanding of the formation mechanisms of emergent capabilities in large models and provides a theoretical basis for designing novel <strong>brain-inspired computing architectures</strong>.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container">
+    </footer>
+</body>
+</html>

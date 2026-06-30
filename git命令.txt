@@ -1,0 +1,25 @@
+# 1. 初始化Git仓库
+git init
+
+# 2. 把所有文件添加到暂存区
+git add .
+
+# 3. 提交到本地仓库，并写一句说明
+git commit -m "Initial commit"
+
+# 4. 把本地仓库和GitHub上的远程仓库连起来（注意用你自己的地址）
+git remote add origin git@github.com:ZhangTian2/personal_web.git
+
+# 5. 推送到GitHub
+git push -u origin main
+
+
+以后每次提交代码，就不用再敲那么多行了。我们只要记住下面这几个命令
+
+git branch   # 看看当前在哪个分支
+git pull     # 先拉取GitHub上最新的代码，防止冲突
+git status   # 看看哪些文件被改动了
+git add .    # 把改动加入暂存区
+git commit -m "更新了啥：比如修复了登录bug"   # 提交到本地
+git push     # 推送到GitHub
+小伙伴们注意哈，这几步已经是最精简的流程了，一个都不要省！

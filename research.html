@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙 - 研究内容</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="个人网页old/website/icon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换逻辑
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-ul');
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // 导航链接点击处理
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 顶部标题区域 + 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>张天乙</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li><a href="index.html">首页</a></li>
+                    <li class="nav-ul-li-active"><a href="research.html">研究内容</a></li>
+                    <li><a href="paper.html">文章</a></li>
+                    <li><a href="report.html">报告</a></li>
+                    <li><a href="news.html">新闻</a></li>
+                    <li class="lang-switch"><a href="en_ver/research.html" title="Switch to English">En</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="container">
+        <section class="content-section">
+            <div class="section-header">
+                <h3 class="section-title">研究内容</h3>
+            </div>
+
+            <div class="section-content">
+
+                <!-- 研究方向 1 -->
+                <div class="research-row">
+                    <div class="research-image">
+                        <img src="r1.png" alt="自旋动力学">
+                    </div>
+                    <div class="research-text">
+                        <div class="news-date" style="font-size: 1.3rem; margin-bottom: 12px;">研究方向 1. 自旋动力学分析</div>
+                        <p class="news-text">
+                            围绕磁性系统中的动力学与磁子输运问题开展理论研究，重点关注磁场和自旋力矩驱动的磁矩<strong>进动</strong>，<strong>章动</strong>和<strong>翻转</strong>行为以及<strong>磁子输运</strong>机制。通过构建自旋动力学与量子输运理论模型，探索磁矩动力学和磁子输运之间的内在联系，发展复杂磁性系统临界点预测方法，并研究其在新型<strong>磁存储</strong>和<strong>磁传感</strong>器件中的潜在应用。
+
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 研究方向 2 -->
+                <div class="research-row">
+                    <div class="research-image">
+                        <img src="r2.png" alt="神经网络涌现">
+                    </div>
+                    <div class="research-text">
+                        <div class="news-date" style="font-size: 1.3rem; margin-bottom: 12px;">研究方向 2. 神经网络的涌现现象</div>
+                        <p class="news-text">
+                            关注复杂智能系统中的涌现现象及其物理机制，研究<strong>神经网络性能突变</strong>与<strong>非线性相变</strong>之间的内在联系。借助序参量、临界指数等统计物理方法，分析Hopfield网络和Transformer等模型在规模扩展过程中的临界行为与能力涌现规律；结合非线性磁子系统中的双稳态和相变动力学，探索智能涌现的普适物理机制。相关研究有助于深化对大模型涌现能力形成机理的理解，并为新型<strong>类脑计算架构</strong>的设计提供理论依据。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="container">
+    </footer>
+</body>
+</html>

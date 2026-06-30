@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙 - 个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="个人网页old/website/icon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换逻辑
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-ul');
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // 导航链接点击处理
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+
+            // 邮箱弹窗逻辑
+            const emailTrigger = document.querySelector('.email-trigger');
+            const emailModal = document.getElementById('emailModal');
+            const closeBtn = document.getElementById('closeEmailModal');
+            const copyBtn = document.getElementById('copyEmailBtn');
+            const copyTip = document.getElementById('copyTip');
+            const emailText = 'zhangty@iphy.ac.cn';
+
+            if (emailTrigger && emailModal) {
+                emailTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    emailModal.classList.add('show');
+                });
+
+                closeBtn.addEventListener('click', function() {
+                    emailModal.classList.remove('show');
+                });
+
+                emailModal.addEventListener('click', function(e) {
+                    if (e.target === emailModal) {
+                        emailModal.classList.remove('show');
+                    }
+                });
+
+                copyBtn.addEventListener('click', function() {
+                    navigator.clipboard.writeText(emailText).then(function() {
+                        copyTip.classList.add('show');
+                        setTimeout(function() {
+                            copyTip.classList.remove('show');
+                        }, 2000);
+                    });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- 顶部标题区域 + 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>张天乙</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li class="nav-ul-li-active"><a href="index.html">首页</a></li>
+                    <li><a href="research.html">研究内容</a></li>
+                    <li><a href="paper.html">文章</a></li>
+                    <li><a href="report.html">报告</a></li>
+                    <li><a href="news.html">新闻</a></li>
+                    <li class="lang-switch"><a href="en_ver/index.html" title="Switch to English">En</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="container">
+        <!-- 页面第一行：左半个人照片+链接，右半个人信息卡 -->
+        <section class="hero-section">
+            <!-- 左半：个人照片 + 链接 -->
+            <div class="hero-profile">
+                <img src="个人网页old/website/zty3.jpg" alt="张天乙">
+                <div class="social-links-vertical">
+                    <div class="social-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>北京，中国</span>
+                    </div>
+                    <a href="#" class="email-trigger">
+                        <i class="fas fa-envelope"></i>
+                        <span>邮箱</span>
+                    </a>
+                    <a href="https://github.com/zhangtian2" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=P3SqNUoAAAAJ&hl=en" target="_blank">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>谷歌学术</span>
+                    </a>
+                    <a href="blog/index.html" target="_blank">
+                        <i class="fas fa-blog"></i>
+                        <span>博客</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 右半：个人信息卡 -->
+            <div class="hero-info">
+                <div class="hero-info-right">
+                    <p class="intro-text">你好！我是张天乙(<a href="个人网页old/website/cv.pdf" target="_blank">简历</a>)，中国科学院物理研究所的博士后。</p>
+                    <p class="intro-text">我研究<strong>磁性材料</strong>在<strong>人工智能</strong>中的应用，主要包括<strong>自旋动力学</strong>和<strong>神经网络</strong>这两方面。</p>
+                    <ul class="intro-list">
+                        <li>在<strong>自旋动力学</strong>方面，我致力于研究磁性材料中的自旋动力学过程，探索磁场、自旋转移力矩以及自旋轨道力矩等机制对磁矩动力学行为的调控规律。通过理论建模和数值模拟，研发<strong>高速</strong>、<strong>低功耗</strong>、<strong>高密度</strong>的新型磁存储单元和<strong>高灵敏度</strong>的磁传感单元，为下一代<strong>磁存储器</strong>和<strong>磁传感器</strong>提供理论基础。</li>
+                        <li>在<strong>神经网络</strong>方面，我关注神经网络的<strong>涌现</strong>现象及其物理本质。通过对比研究磁性系统中的<strong>相变</strong>行为与神经网络中的<strong>涌现</strong>现象，揭示复杂系统在临界点附近产生新能力的共同机制。特别是结合非线性磁子系统、Hopfield网络和Transformer模型，探索智能系统涌现能力的形成原理，为理解人工智能中的<strong>涌现规律</strong>以及构建新型<strong>类脑计算架构</strong>提供理论视角。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新闻部分 -->
+        <section class="content-section">
+            <div class="section-header">
+                <h3 class="section-title">新闻</h3>
+                <a href="news.html" class="section-link">
+                    更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="section-content">
+                    <div class="news-item">
+                        <i class="fas fa-bullhorn news-icon"></i>
+                        <div class="news-content">
+                            <span class="news-date">2026/06/12</span>
+                            <a href="news/20260612-graduation.html" class="news-link"><p class="news-text">毕业啦！</p></a>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <i class="fas fa-bullhorn news-icon"></i>
+                        <div class="news-content">
+                            <span class="news-date">2025/10/26</span>
+                            <a href="news/20251026-Predictive-indicator.html" class="news-link"><p class="news-text">论文《Predictive indicator of critical point in equilibrium and nonequilibrium magnetic systems》在物理期刊Physical Review Letters上发表！</p></a>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <i class="fas fa-bullhorn news-icon"></i>
+                        <div class="news-content">
+                            <span class="news-date">2025/01/21</span>
+                            <a href="news/20250121-In-plane-magnon-valve.html" class="news-link"><p class="news-text">论文《In-plane magnon valve effect in magnetic insulator–heavy metal–magnetic insulator device》在物理期刊Phycical Review B上发表！</p></a>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 邮箱弹窗 -->
+    <div class="modal-overlay" id="emailModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="modal-btn-copy" id="copyEmailBtn" title="复制邮箱">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <button class="modal-btn-close" id="closeEmailModal" title="关闭">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-envelope modal-email-icon"></i>
+                <p class="modal-email-text">zhangty(at)iphy.ac.cn</p>
+                <span class="modal-copy-tip" id="copyTip">已复制到剪贴板</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="container">
+    </footer>
+</body>
+</html>

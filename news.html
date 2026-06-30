@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙 - 新闻</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="个人网页old/website/icon.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换逻辑
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navMenu = document.querySelector('.nav-ul');
+                navMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // 导航链接点击处理
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 顶部标题区域 + 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>张天乙</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="research.html">研究内容</a></li>
+                    <li><a href="paper.html">文章</a></li>
+                    <li><a href="report.html">报告</a></li>
+                    <li class="nav-ul-li-active"><a href="news.html">新闻</a></li>
+                    <li class="lang-switch"><a href="en_ver/news.html" title="Switch to English">En</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 新闻内容区域 -->
+    <main class="container">
+        <section class="content-section">
+            <div class="section-header">
+                <h3 class="section-title">新闻</h3>
+            </div>
+            <div class="section-content">
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2026/06/12</span>
+                        <a href="news/20260612-graduation.html" class="news-link"><p class="news-text">毕业啦！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2025/10/26</span>
+                        <a href="news/20251026-Predictive-indicator.html" class="news-link"><p class="news-text">论文《Predictive indicator of critical point in equilibrium and nonequilibrium magnetic systems》在物理期刊Physical Review Letters上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2025/01/21</span>
+                        <a href="news/20250121-In-plane-magnon-valve.html" class="news-link"><p class="news-text">论文《In-plane magnon valve effect in magnetic insulator–heavy metal–magnetic insulator device》在物理期刊 Physical Review B 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2024/09/30</span>
+                        <a href="news/20240930-Electrical-switching-Neel-order.html" class="news-link"><p class="news-text">论文《Electrical switching of the perpendicular Néel order in a collinear antiferromagnet》在物理期刊 Nature Electronics 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2024/07/08</span>
+                        <a href="news/20240708-Magnonics-review.html" class="news-link"><p class="news-text">论文《Magnonics: Materials, physics, and devices》在物理期刊 Applied Physics Letters 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2024/05/24</span>
+                        <a href="news/20240524-Magnetic-field-Casimir-force.html" class="news-link"><p class="news-text">论文《Magnetic-field tuning of the Casimir force》在物理期刊 Nature Physics 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2024/02/16</span>
+                        <a href="news/20240216-Voltage-Controlled-Magnon-Transistor.html" class="news-link"><p class="news-text">论文《Voltage-Controlled Magnon Transistor via Tuning Interfacial Exchange Coupling》在物理期刊 PRL 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2023/09/26</span>
+                        <a href="news/20230926-Full-quantum-theory-magnon-transport.html" class="news-link"><p class="news-text">论文《Full quantum theory for magnon transport in two-sublattice magnetic insulators and magnon junctions》在物理期刊 PRB 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2023/07/27</span>
+                        <a href="news/20230727-Threshold-current-field-free-switching.html" class="news-link"><p class="news-text">论文《Threshold current of field-free perpendicular magnetization switching using anomalous spin-orbit torque》在物理期刊 PRB 上发表！</p></a>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <i class="fas fa-bullhorn news-icon"></i>
+                    <div class="news-content">
+                        <span class="news-date">2022/05/19</span>
+                        <a href="news/20220519-website-online.html" class="news-link"><p class="news-text">个人网页上线啦！</p></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="container">
+    </footer>
+</body>
+</html>
