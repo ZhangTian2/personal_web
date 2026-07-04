@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张天乙 - 机器学习5大要素和线性回归案例</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="shortcut icon" href="../../个人网页old/website/icon.ico">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        /* ======== Markdown 正文样式 (VS Code 风格) ======== */
+        .md-body {
+            max-width: 860px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #1e1e1e;
+        }
+
+        .md-body h1 {
+            font-size: 2em;
+            font-weight: 700;
+            margin: 0.8em 0 0.4em;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #d4d4d4;
+            color: #000;
+        }
+
+        .md-body h2 {
+            font-size: 1.55em;
+            font-weight: 700;
+            margin: 1.1em 0 0.4em;
+            padding-bottom: 0.25em;
+            border-bottom: 1px solid #e0e0e0;
+            color: #1e1e1e;
+        }
+
+        .md-body h3 {
+            font-size: 1.28em;
+            font-weight: 700;
+            margin: 1em 0 0.3em;
+            color: #1e1e1e;
+        }
+
+        .md-body h4 {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin: 0.9em 0 0.25em;
+            color: #333;
+        }
+
+        .md-body p {
+            margin: 0 0 14px;
+            text-align: justify;
+            border-left: none;
+            padding-left: 0;
+            display: block;
+        }
+
+        .md-body ul, .md-body ol {
+            padding-left: 2em;
+            margin: 0 0 14px;
+        }
+
+        .md-body li {
+            margin-bottom: 4px;
+        }
+
+        .md-body strong {
+            color: #000;
+        }
+
+        /* 行内代码 */
+        .md-body code {
+            font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+            font-size: 0.88em;
+            background: #f0f0f0;
+            color: #a31515;
+            padding: 2px 6px;
+            border-radius: 3px;
+            word-break: break-word;
+        }
+
+        /* 代码块 */
+        .md-body pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 0 0 18px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .md-body pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+            border-radius: 0;
+        }
+
+        /* 简单的语法高亮 */
+        .md-body pre .kw  { color: #569cd6; }  /* 关键字 */
+        .md-body pre .str { color: #ce9178; }  /* 字符串 */
+        .md-body pre .cm  { color: #6a9955; }  /* 注释 */
+        .md-body pre .fn  { color: #dcdcaa; }  /* 函数名 */
+        .md-body pre .num { color: #b5cea8; }  /* 数字 */
+        .md-body pre .op  { color: #d4d4d4; }  /* 运算符 */
+
+        .md-body blockquote {
+            border-left: 4px solid #d4d4d4;
+            margin: 0 0 14px;
+            padding: 4px 16px;
+            color: #555;
+            background: #fafafa;
+        }
+
+        .md-body img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin: 8px 0;
+        }
+
+        .md-body table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 0 16px;
+        }
+
+        .md-body th, .md-body td {
+            border: 1px solid #d4d4d4;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .md-body th {
+            background: #f2f2f2;
+            font-weight: 600;
+        }
+
+        .md-body hr {
+            border: none;
+            border-top: 1px solid #d4d4d4;
+            margin: 24px 0;
+        }
+
+        /* 返回链接 */
+        .md-back {
+            margin-top: 30px;
+            padding-top: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .md-back a {
+            font-size: 0.95rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .md-back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>张天乙 · 博客</h1>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-ul">
+                    <li><a href="../index.html">自旋电子学</a></li>
+                    <li class="nav-ul-li-active"><a href="../ai.html">人工智能学</a></li>
+                    <li><a href="../other.html">其他</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="blog-hero" style="text-align: left;">
+            <div class="md-body">
+
+<h1>机器学习概述-5大要素和线性回归案例</h1>
+
+<h2>1. 机器学习5大要素</h2>
+
+<ul>
+    <li>数据</li>
+    <li>模型</li>
+    <li>学习准则</li>
+    <li>优化算法</li>
+    <li>评价指标</li>
+</ul>
+
+<h4>1.1 数据-构造用于线性回归的数据集</h4>
+
+<p>创建一个符合 $y = wx + b$，并且包含高斯噪声的数据，代码：</p>
+
+<pre><code><span class="kw">import</span> torch
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+torch.manual_seed(<span class="num">0</span>)
+
+<span class="kw">def</span> <span class="fn">linear_data</span>(n, w=<span class="num">1.2</span>, b=<span class="num">0.5</span>, noise=<span class="num">2.0</span>, interval=(-<span class="num">10</span>,<span class="num">10</span>)):
+    x = torch.empty(n,<span class="num">1</span>).uniform_(*interval)
+    y = w*x+b+noise*torch.randn_like(x)
+    <span class="kw">return</span> x,y
+
+X_train, y_train = linear_data(<span class="num">100</span>)
+X_test,  y_test  = linear_data(<span class="num">50</span>)
+X_large, y_large = linear_data(<span class="num">5000</span>)
+
+xs = torch.linspace(-<span class="num">10</span>, <span class="num">10</span>, <span class="num">200</span>).unsqueeze(<span class="num">1</span>)
+plt.scatter(X_train.numpy(), y_train.numpy(), s=<span class="num">15</span>, alpha=<span class="num">0.6</span>, label=<span class="str">'train (100)'</span>)
+plt.scatter(X_test.numpy(),  y_test.numpy(),  s=<span class="num">15</span>, alpha=<span class="num">0.6</span>, label=<span class="str">'test (50)'</span>)
+plt.plot(xs.numpy(), (<span class="num">1.2</span>*xs + <span class="num">0.5</span>).numpy(), <span class="str">'k-'</span>, lw=<span class="num">1</span>, label=<span class="str">'underlying'</span>)
+plt.legend(); plt.xlabel(<span class="str">'x'</span>); plt.ylabel(<span class="str">'y'</span>); plt.title(<span class="str">'ToyLinear150'</span>); plt.show()</code></pre>
+
+<p>运行结果：</p>
+
+<img src="image.png" alt="">
+
+<h5>注：</h5>
+
+<ul>
+    <li><code>torch.empty(n,1)</code> 创建一个n行1列的二维张量</li>
+    <li><code>uniform_()</code> 是python的 <code>in-place</code> 方法，直接修改原有对象的内容，而不创建新的副本，例如
+        <pre><code><span class="kw">import</span> torch
+x = torch.tensor([<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>])
+y = torch.tensor([<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>])
+x1 = x.add(<span class="num">1</span>)
+<span class="cm">#x = tensor([1,2,3]), x1 = tensor([2,3,4])</span>
+y1 = y.add_(<span class="num">1</span>)
+<span class="cm">#y = tensor([2,3,4]), y1 = tensor([2,3,4])</span></code></pre>
+    </li>
+    <li><code>*interval</code> 是python的解包操作，<code>(*interval)</code> 等价于 <code>(-10,10)</code><br>
+        两种解包操作符 <code>*</code> 和 <code>**</code><br>
+        <strong>单星号</strong> <code>*</code> 解包<strong>位置参数</strong>。基本用法是解包到函数参数，例子如下：
+        <pre><code><span class="kw">def</span> <span class="fn">add</span>(a, b, c):
+  <span class="kw">return</span> a + b + c
+  <span class="cm"># 不使用解包</span>
+  numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
+  result = add(numbers[<span class="num">0</span>], numbers[<span class="num">1</span>], numbers[<span class="num">2</span>])  <span class="cm"># 6</span>
+  <span class="cm"># 使用解包</span>
+  result = add(*numbers)  <span class="cm"># 等价于 add(1, 2, 3)</span>
+  <span class="kw">print</span>(result)  <span class="cm"># 6</span></code></pre>
+        支持的数据类型有：
+        <pre><code><span class="cm"># 元组</span>
+args = (<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>)
+func(*args)
+<span class="cm"># 列表</span>
+args = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
+func(*args)
+<span class="cm"># 字符串（拆成单个字符）</span>
+chars = <span class="str">"abc"</span>
+<span class="kw">print</span>(*chars)  <span class="cm"># a b c</span>
+<span class="cm"># 集合</span>
+args = {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>}  <span class="cm"># 注意：无序</span>
+func(*args)
+<span class="cm"># 生成器</span>
+args = range(<span class="num">3</span>)  <span class="cm"># 0, 1, 2</span>
+func(*args)</code></pre>
+        <strong>双星号</strong> <code>**</code> 解包<strong>关键字参数</strong>。例子如下：
+        <pre><code>  <span class="kw">def</span> <span class="fn">introduce</span>(name, age, city):
+      <span class="kw">print</span>(<span class="str">f"{name} is {age} years old from {city}"</span>)
+  <span class="cm"># 不使用解包</span>
+  person = {<span class="str">"name"</span>: <span class="str">"Alice"</span>, <span class="str">"age"</span>: <span class="num">30</span>, <span class="str">"city"</span>: <span class="str">"New York"</span>}
+  introduce(person[<span class="str">"name"</span>], person[<span class="str">"age"</span>], person[<span class="str">"city"</span>])
+  <span class="cm"># 使用解包</span>
+  introduce(**person)  <span class="cm"># 等价于 introduce(name="Alice", age=30, city="New York")</span>
+  <span class="cm"># 输出: Alice is 30 years old from New York</span></code></pre>
+        支持的数据类型有：字典。<br>
+        解包符号也可以在函数定义中使用，<code>*args</code> - 收集多余的位置参数，<code>**kwargs</code> - 收集多余的关键字参数。例如
+        <pre><code><span class="kw">def</span> <span class="fn">func</span>(a, b, *args, c=<span class="num">10</span>, **kwargs):
+  <span class="kw">print</span>(<span class="str">f"a={a}, b={b}, args={args}, c={c}, kwargs={kwargs}"</span>)
+
+func(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, c=<span class="num">20</span>, d=<span class="num">5</span>, e=<span class="num">6</span>)
+<span class="cm"># a=1, b=2, args=(3, 4), c=20, kwargs={'d': 5, 'e': 6}</span>
+<span class="cm">#顺序原则：必填位置参数 → 可选位置参数(*args) → 默认参数 → 可选关键字参数(**kwargs)</span></code></pre>
+    </li>
+    <li><code>unsqueeze()</code> 的详细用法：
+        <pre><code>tensor.unsqueeze(dim)  <span class="cm"># 在 dim 位置插入一个维度</span></code></pre>
+    </li>
+</ul>
+
+<h4>1.2 模型-线性算子</h4>
+
+<p>PyTorch 已经内置了 <code>nn.Linear</code>，但为了更深入地理解算子是如何工作的，本节定义一个继承自 <code>Op</code> 接口的 <code>Linear</code> 算子。它把权重和偏置作为成员变量 <code>params</code> 持有，便于后面手写最小二乘法直接赋值。</p>
+
+<pre><code><span class="kw">class</span> <span class="fn">Op</span>(<span class="kw">object</span>):
+  <span class="kw">def</span> <span class="fn">__init__</span>(<span class="kw">self</span>):
+    <span class="kw">pass</span>
+
+  <span class="kw">def</span> <span class="fn">__call__</span>(<span class="kw">self</span>,inputs):
+    <span class="kw">return</span> <span class="kw">self</span>.forward(inputs)
+
+  <span class="kw">def</span> <span class="fn">forward</span>(<span class="kw">self</span>, inputs):
+    <span class="kw">raise</span> NotImplementedError
+
+  <span class="kw">def</span> <span class="fn">backward</span>(<span class="kw">self</span>, outputs_grads):
+    <span class="kw">raise</span> NotImplementedError
+
+<span class="kw">class</span> <span class="fn">Linear</span>(Op):
+  <span class="str">"""y=Xw+b的线性算子"""</span>
+  <span class="kw">def</span> <span class="fn">__init__</span>(<span class="kw">self</span>, input_size):
+    <span class="kw">self</span>.input_size = input_size
+    <span class="cm"># 模型参数</span>
+    <span class="kw">self</span>.params = {
+      <span class="str">'w'</span>: torch.randn(input_size, <span class="num">1</span>),
+      <span class="str">'b'</span>: torch.zeros(<span class="num">1</span>),
+    }
+  <span class="kw">def</span> <span class="fn">__call__</span>(<span class="kw">self</span>, X):
+    <span class="kw">return</span> <span class="kw">self</span>.forward(X)
+  <span class="kw">def</span> <span class="fn">forward</span>(<span class="kw">self</span>, X):
+    <span class="cm"># X: [N, D]   ->   y_pred: [N, 1]</span>
+    <span class="kw">assert</span> X.shape[<span class="num">1</span>] == <span class="kw">self</span>.input_size
+    <span class="kw">return</span> X @ <span class="kw">self</span>.params[<span class="str">'w'</span>]+<span class="kw">self</span>.params[<span class="str">'b'</span>]
+
+<span class="cm"># 简单测试</span>
+torch.manual_seed(<span class="num">0</span>)
+model_demo = Linear(input_size = <span class="num">3</span>)
+X_demo = torch.randn(<span class="num">2</span>,<span class="num">3</span>)
+<span class="kw">print</span>(<span class="str">'y_pred:'</span>, model_demo(X_demo))</code></pre>
+
+<p>运行结果：</p>
+
+<pre><code>y_pred:
+tensor([[4.2414],
+        [1.9428]])</code></pre>
+
+<h5>注：</h5>
+
+<ul>
+    <li><code>__call__</code> 让 Op 的实例变成了可调用的函数式对象，它内部仅仅是把调用转发给 forward 方法，目的是提升使用时的语法简洁性和语义直观性，并为框架后续的功能扩展（如自动梯度追踪、钩子注入）预留接口位置。</li>
+    <li><code>NotImplementedError</code> 是 Python 内置的一个异常类，它的核心作用是标记某个方法尚未实现，强制子类必须重写该方法。</li>
+    <li><code>@</code> 是矩阵乘法（线性代数标准运算，用于特征变换），<code>*</code> 是逐元素乘法（对应位置相乘，仅用于元素级操作）。如果想在神经网络中实现正确的线性变换，必须使用 <code>@</code>（或 <code>np.dot</code>、<code>torch.matmul</code>），而不是 <code>*</code>。</li>
+</ul>
+
+<h4>1.3 学习准则：均方误差</h4>
+
+<p>回归任务是对<strong>连续值</strong>的预测，希望模型能根据数据特征输出一个连续值作为预测值。因此回归任务中常用的学习准则是<strong>均方误差</strong>（Mean Squared Error，MSE）。</p>
+
+<p>令 $\boldsymbol{y}\in\mathbb{R}^N$、$\hat{\boldsymbol{y}}\in\mathbb{R}^N$ 分别为 $N$ 个样本的真实标签和预测标签，均方误差定义为</p>
+
+<p>$$ \mathcal{L}(\boldsymbol{y},\hat{\boldsymbol{y}})=\frac{1}{2N}\|\hat{\boldsymbol{y}}-\boldsymbol{y}\|^2=\frac{1}{2N}\|\boldsymbol{X}\boldsymbol{w}+\boldsymbol{b}-\boldsymbol{y}\|^2, $$</p>
+
+<p>其中 $\boldsymbol{b}$ 为所有元素均为 $b$ 的 $N$ 维向量。</p>
+
+<p>对应的python代码为：</p>
+
+<pre><code><span class="kw">def</span> <span class="fn">mean_squared_error</span>(y_true, y_pred):
+  <span class="kw">assert</span> y_true.shape[<span class="num">0</span>] == y_pred.shape[<span class="num">0</span>]
+  <span class="kw">return</span> <span class="num">0.5</span>*((y_true - y_pred) <span class="op">**</span> <span class="num">2</span>).mean()</code></pre>
+
+<h5>注：</h5>
+
+<ul>
+    <li><code>assert</code> 是 Python 中的断言语句，用于调试阶段检查程序中的假设条件是否成立。如果条件为 <code>False</code>，程序会抛出 <code>AssertionError</code> 异常并终止运行。</li>
+</ul>
+
+<h4>1.4 优化算法：最小二乘法与梯度法</h4>
+
+<p>对于线性回归 + 均方误差，最优参数可以直接令偏导数等于 $0$ 得到<strong>解析解</strong>。这种方式叫<strong>最小二乘法</strong>（Least Square Method，LSM）。</p>
+
+<p>对均方误差关于 $b$ 求偏导并令其为 $0$，可以解出</p>
+
+<p>$$ b^* = \bar y - \bar{\boldsymbol{x}}^\top \boldsymbol{w}, $$</p>
+
+<p>其中 $\bar y$ 和 $\bar{\boldsymbol{x}}$ 分别是标签和特征向量的平均值。把 $b^*$ 代回去再对 $\boldsymbol{w}$ 求偏导，可以解出</p>
+
+<p>$$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)\big)^{-1}(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{y}-\bar y). $$</p>
+
+<p>若加上 $\ell_2$ 正则化（结构风险），最优解变为</p>
+
+<p>$$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)+\lambda \boldsymbol{I}\big)^{-1}(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{y}-\bar y). $$</p>
+
+<p>下面把 <code>optimizer_lsm</code> 用 PyTorch 实现出来。</p>
+
+<pre><code><span class="kw">def</span> <span class="fn">optimizer_lsm</span>(model, X, y, reg_lambda = <span class="num">0.0</span>):
+  <span class="str">"""最小二乘法（可带 L2 正则化）求解 Linear 算子的参数。"""</span>
+  N, D = X.shape
+  x_bar = X.mean(dim=<span class="num">0</span>, keepdim = <span class="kw">True</span>)
+  y_bar = y.mean()
+  x_sub = X-x_bar
+  <span class="kw">if</span> torch.all(x_sub == <span class="num">0</span>):
+    model.params[<span class="str">'b'</span>] = y_bar.unsqueeze(<span class="num">0</span>)
+    model.params[<span class="str">'w'</span>] = torch.zeros(D, <span class="num">1</span>)
+    <span class="kw">return</span> model
+  A = x_sub.T @ x_sub + reg_lambda * torch.eye(D, dtype=X.dtype, device=X.device)
+  rhs = x_sub.T @ (y - y_bar)
+  w = torch.linalg.solve(A, rhs)
+  b = y_bar - x_bar @ w                       <span class="cm"># [1, 1]</span>
+
+  model.params[<span class="str">'w'</span>] = w                       <span class="cm"># [D, 1]</span>
+  model.params[<span class="str">'b'</span>] = b.squeeze(<span class="num">0</span>)            <span class="cm"># [1]</span>
+  <span class="kw">return</span> model</code></pre>
+
+<h5>注：</h5>
+
+<ul>
+    <li>L2正则化是机器学习中用来防止过拟合的一种技术手段，通过在损失函数中添加权重的平方和作为惩罚项，迫使模型的权重趋向于较小的值。它的另一个常见名字叫 "权重衰减"（Weight Decay）</li>
+</ul>
+
+<h4>1.5 模型训练 + 评价</h4>
+
+<p>在准备了数据、模型、损失和优化器后，我们开始训练。对线性回归而言，最小二乘法一步就能解出最优参数；模型的评价指标和损失函数一致，都用 MSE。对应的python代码为：</p>
+
+<pre><code>model = Linear(input_size = <span class="num">1</span>)
+optimizer_lsm(model, X_train, y_train)
+<span class="kw">print</span>(<span class="str">f"w_pred: {model.params['w'].item():.4f}   b_pred: {model.params['b'].item():.4f}"</span>)
+y_train_pred = model(X_train)
+train_error  = mean_squared_error(y_train, y_train_pred).item()
+y_test_pred  = model(X_test)
+test_error   = mean_squared_error(y_test,  y_test_pred).item()
+<span class="kw">print</span>(<span class="str">f'train error: {train_error:.4f}'</span>)
+<span class="kw">print</span>(<span class="str">f'test  error: {test_error:.4f}'</span>)</code></pre>
+
+<p>输出结果为：</p>
+
+<pre><code>w_pred: 1.1760   b_pred: 1.2056
+train error: 1.9685
+test  error: 2.1148</code></pre>
+
+<h2>总结</h2>
+
+<p>将整个线性回归过程整合到一起的代码为：</p>
+
+<pre><code><span class="kw">import</span> torch
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+torch.manual_seed(<span class="num">0</span>)
+
+<span class="cm"># 1.数据</span>
+<span class="kw">def</span> <span class="fn">linear_data</span>(n, w=<span class="num">1.2</span>, b=<span class="num">0.5</span>, noise=<span class="num">2.0</span>, interval=(-<span class="num">10</span>,<span class="num">10</span>)):
+  x = torch.empty(n,<span class="num">1</span>).uniform_(*interval)
+  y = w*x+b+noise*torch.randn_like(x)
+  <span class="kw">return</span> x,y
+X_train, y_train = linear_data(<span class="num">100</span>)
+X_test,  y_test  = linear_data(<span class="num">50</span>)
+X_large, y_large = linear_data(<span class="num">5000</span>)
+xs = torch.linspace(-<span class="num">10</span>, <span class="num">10</span>, <span class="num">200</span>).unsqueeze(<span class="num">1</span>)
+plt.scatter(X_train.numpy(), y_train.numpy(), s=<span class="num">15</span>, alpha=<span class="num">0.6</span>, label=<span class="str">'train (100)'</span>)
+plt.scatter(X_test.numpy(),  y_test.numpy(),  s=<span class="num">15</span>, alpha=<span class="num">0.6</span>, label=<span class="str">'test (50)'</span>)
+plt.plot(xs.numpy(), (<span class="num">1.2</span>*xs + <span class="num">0.5</span>).numpy(), <span class="str">'k-'</span>, lw=<span class="num">1</span>, label=<span class="str">'underlying'</span>)
+plt.legend(); plt.xlabel(<span class="str">'x'</span>); plt.ylabel(<span class="str">'y'</span>); plt.title(<span class="str">'ToyLinear150'</span>); plt.show()
+
+<span class="cm"># 2.模型</span>
+<span class="kw">class</span> <span class="fn">Op</span>(<span class="kw">object</span>):
+  <span class="kw">def</span> <span class="fn">__init__</span>(<span class="kw">self</span>):
+    <span class="kw">pass</span>
+  <span class="kw">def</span> <span class="fn">__call__</span>(<span class="kw">self</span>,inputs):
+    <span class="kw">return</span> <span class="kw">self</span>.forward(inputs)
+  <span class="kw">def</span> <span class="fn">forward</span>(<span class="kw">self</span>, inputs):
+    <span class="kw">raise</span> NotImplementedError
+  <span class="kw">def</span> <span class="fn">backward</span>(<span class="kw">self</span>, outputs_grads):
+    <span class="kw">raise</span> NotImplementedError
+<span class="kw">class</span> <span class="fn">Linear</span>(Op):
+  <span class="str">"""y=Xw+b的线性算子"""</span>
+  <span class="kw">def</span> <span class="fn">__init__</span>(<span class="kw">self</span>, input_size):
+    <span class="kw">self</span>.input_size = input_size
+    <span class="cm"># 模型参数</span>
+    <span class="kw">self</span>.params = {
+      <span class="str">'w'</span>: torch.randn(input_size, <span class="num">1</span>),
+      <span class="str">'b'</span>: torch.zeros(<span class="num">1</span>),
+    }
+  <span class="kw">def</span> <span class="fn">__call__</span>(<span class="kw">self</span>, X):
+    <span class="kw">return</span> <span class="kw">self</span>.forward(X)
+  <span class="kw">def</span> <span class="fn">forward</span>(<span class="kw">self</span>, X):
+    <span class="cm"># X: [N, D]   ->   y_pred: [N, 1]</span>
+    <span class="kw">assert</span> X.shape[<span class="num">1</span>] == <span class="kw">self</span>.input_size
+    <span class="kw">return</span> X @ <span class="kw">self</span>.params[<span class="str">'w'</span>]+<span class="kw">self</span>.params[<span class="str">'b'</span>]
+
+<span class="cm"># 3.学习准则</span>
+<span class="kw">def</span> <span class="fn">mean_squared_error</span>(y_true, y_pred):
+  <span class="kw">assert</span> y_true.shape[<span class="num">0</span>] == y_pred.shape[<span class="num">0</span>]
+  <span class="kw">return</span> <span class="num">0.5</span>*((y_true - y_pred) <span class="op">**</span> <span class="num">2</span>).mean()
+
+<span class="cm"># 4.优化方法</span>
+<span class="kw">def</span> <span class="fn">optimizer_lsm</span>(model, X, y, reg_lambda = <span class="num">0.0</span>):
+  <span class="str">"""最小二乘法（可带 L2 正则化）求解 Linear 算子的参数。"""</span>
+  N, D = X.shape
+  x_bar = X.mean(dim=<span class="num">0</span>, keepdim = <span class="kw">True</span>)
+  y_bar = y.mean()
+  x_sub = X-x_bar
+  <span class="kw">if</span> torch.all(x_sub == <span class="num">0</span>):
+    model.params[<span class="str">'b'</span>] = y_bar.unsqueeze(<span class="num">0</span>)
+    model.params[<span class="str">'w'</span>] = torch.zeros(D, <span class="num">1</span>)
+    <span class="kw">return</span> model
+  A = x_sub.T @ x_sub + reg_lambda * torch.eye(D, dtype=X.dtype, device=X.device)
+  rhs = x_sub.T @ (y - y_bar)
+  w = torch.linalg.solve(A, rhs)
+  b = y_bar - x_bar @ w                       <span class="cm"># [1, 1]</span>
+  model.params[<span class="str">'w'</span>] = w                       <span class="cm"># [D, 1]</span>
+  model.params[<span class="str">'b'</span>] = b.squeeze(<span class="num">0</span>)            <span class="cm"># [1]</span>
+  <span class="kw">return</span> model
+
+<span class="cm"># 5.模型训练+评价</span>
+model = Linear(input_size = <span class="num">1</span>)
+optimizer_lsm(model, X_train, y_train)
+<span class="kw">print</span>(<span class="str">f"w_pred: {model.params['w'].item():.4f}   b_pred: {model.params['b'].item():.4f}"</span>)
+y_train_pred = model(X_train)
+train_error  = mean_squared_error(y_train, y_train_pred).item()
+y_test_pred  = model(X_test)
+test_error   = mean_squared_error(y_test,  y_test_pred).item()
+<span class="kw">print</span>(<span class="str">f'train error: {train_error:.4f}'</span>)
+<span class="kw">print</span>(<span class="str">f'test  error: {test_error:.4f}'</span>)</code></pre>
+
+                <div class="md-back">
+                    <a href="../ai.html">← 返回人工智能学</a>
+                </div>
+
+            </div><!-- /.md-body -->
+        </section>
+    </main>
+
+    <footer class="container">
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    const navMenu = document.querySelector('.nav-ul');
+                    navMenu.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+
+            document.querySelectorAll('.nav-ul a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-ul').classList.remove('active');
+                        const icon = document.querySelector('.menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
