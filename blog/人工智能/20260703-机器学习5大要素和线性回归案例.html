@@ -174,6 +174,84 @@
         .md-back a:hover {
             text-decoration: underline;
         }
+
+        /* ======== 目录侧边栏 ======== */
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .toc-sidebar {
+            position: sticky;
+            top: 20px;
+            min-width: 220px;
+            max-width: 240px;
+            background: #fafafa;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 16px 18px;
+            font-size: 14px;
+            line-height: 1.7;
+            flex-shrink: 0;
+        }
+
+        .toc-sidebar .toc-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+
+        .toc-sidebar a {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            padding: 3px 8px;
+            border-radius: 4px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .toc-sidebar a:hover {
+            background: #e8e8e8;
+            color: #000;
+        }
+
+        .toc-sidebar a.toc-h1 {
+            font-weight: 600;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .toc-sidebar a.toc-h2 {
+            font-weight: 600;
+            color: #333;
+            margin-top: 4px;
+        }
+
+        .toc-sidebar a.toc-h4 {
+            padding-left: 20px;
+            font-size: 13px;
+        }
+
+        .md-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .toc-sidebar {
+                position: static;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -197,11 +275,25 @@
 
     <main class="container">
         <section class="blog-hero" style="text-align: left;">
-            <div class="md-body">
+            <div class="content-wrapper">
 
-<h1>机器学习概述-5大要素和线性回归案例</h1>
+                <nav class="toc-sidebar">
+                    <div class="toc-title">📑 目录</div>
+                    <a href="#sec-title" class="toc-h1">机器学习概述-5大要素</a>
+                    <a href="#sec-1" class="toc-h2">1. 机器学习5大要素</a>
+                    <a href="#sec-1-1" class="toc-h4">1.1 数据-线性回归数据集</a>
+                    <a href="#sec-1-2" class="toc-h4">1.2 模型-线性算子</a>
+                    <a href="#sec-1-3" class="toc-h4">1.3 学习准则：均方误差</a>
+                    <a href="#sec-1-4" class="toc-h4">1.4 优化算法</a>
+                    <a href="#sec-1-5" class="toc-h4">1.5 模型训练 + 评价</a>
+                    <a href="#sec-summary" class="toc-h2">总结</a>
+                </nav>
 
-<h2>1. 机器学习5大要素</h2>
+                <div class="md-body">
+
+<h1 id="sec-title">机器学习概述-5大要素和线性回归案例</h1>
+
+<h2 id="sec-1">1. 机器学习5大要素</h2>
 
 <ul>
     <li>数据</li>
@@ -211,7 +303,7 @@
     <li>评价指标</li>
 </ul>
 
-<h4>1.1 数据-构造用于线性回归的数据集</h4>
+<h4 id="sec-1-1">1.1 数据-构造用于线性回归的数据集</h4>
 
 <p>创建一个符合 $y = wx + b$，并且包含高斯噪声的数据，代码：</p>
 
@@ -301,7 +393,7 @@ func(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3
     </li>
 </ul>
 
-<h4>1.2 模型-线性算子</h4>
+<h4 id="sec-1-2">1.2 模型-线性算子</h4>
 
 <p>PyTorch 已经内置了 <code>nn.Linear</code>，但为了更深入地理解算子是如何工作的，本节定义一个继承自 <code>Op</code> 接口的 <code>Linear</code> 算子。它把权重和偏置作为成员变量 <code>params</code> 持有，便于后面手写最小二乘法直接赋值。</p>
 
@@ -354,7 +446,7 @@ tensor([[4.2414],
     <li><code>@</code> 是矩阵乘法（线性代数标准运算，用于特征变换），<code>*</code> 是逐元素乘法（对应位置相乘，仅用于元素级操作）。如果想在神经网络中实现正确的线性变换，必须使用 <code>@</code>（或 <code>np.dot</code>、<code>torch.matmul</code>），而不是 <code>*</code>。</li>
 </ul>
 
-<h4>1.3 学习准则：均方误差</h4>
+<h4 id="sec-1-3">1.3 学习准则：均方误差</h4>
 
 <p>回归任务是对<strong>连续值</strong>的预测，希望模型能根据数据特征输出一个连续值作为预测值。因此回归任务中常用的学习准则是<strong>均方误差</strong>（Mean Squared Error，MSE）。</p>
 
@@ -376,7 +468,7 @@ $$ \mathcal{L}(\boldsymbol{y},\widehat{\boldsymbol{y}})=\frac{1}{2N}\|\widehat{\
     <li><code>assert</code> 是 Python 中的断言语句，用于调试阶段检查程序中的假设条件是否成立。如果条件为 <code>False</code>，程序会抛出 <code>AssertionError</code> 异常并终止运行。</li>
 </ul>
 
-<h4>1.4 优化算法：最小二乘法与梯度法</h4>
+<h4 id="sec-1-4">1.4 优化算法：最小二乘法与梯度法</h4>
 
 <p>对于线性回归 + 均方误差，最优参数可以直接令偏导数等于 $0$ 得到<strong>解析解</strong>。这种方式叫<strong>最小二乘法</strong>（Least Square Method，LSM）。</p>
 
@@ -419,7 +511,7 @@ $$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)^\top(
     <li>L2正则化是机器学习中用来防止过拟合的一种技术手段，通过在损失函数中添加权重的平方和作为惩罚项，迫使模型的权重趋向于较小的值。它的另一个常见名字叫 "权重衰减"（Weight Decay）</li>
 </ul>
 
-<h4>1.5 模型训练 + 评价</h4>
+<h4 id="sec-1-5">1.5 模型训练 + 评价</h4>
 
 <p>在准备了数据、模型、损失和优化器后，我们开始训练。对线性回归而言，最小二乘法一步就能解出最优参数；模型的评价指标和损失函数一致，都用 MSE。对应的python代码为：</p>
 
@@ -439,7 +531,7 @@ test_error   = mean_squared_error(y_test,  y_test_pred).item()
 train error: 1.9685
 test  error: 2.1148</code></pre>
 
-<h2>总结</h2>
+<h2 id="sec-summary">总结</h2>
 
 <p>将整个线性回归过程整合到一起的代码为：</p>
 
@@ -526,7 +618,9 @@ test_error   = mean_squared_error(y_test,  y_test_pred).item()
                     <a href="../ai.html">← 返回人工智能学</a>
                 </div>
 
-            </div><!-- /.md-body -->
+                </div><!-- /.md-body -->
+
+            </div><!-- /.content-wrapper -->
         </section>
     </main>
 
