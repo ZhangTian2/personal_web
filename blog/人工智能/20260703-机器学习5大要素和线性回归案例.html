@@ -358,9 +358,9 @@ tensor([[4.2414],
 
 <p>回归任务是对<strong>连续值</strong>的预测，希望模型能根据数据特征输出一个连续值作为预测值。因此回归任务中常用的学习准则是<strong>均方误差</strong>（Mean Squared Error，MSE）。</p>
 
-<p>令 $\boldsymbol{y}\in\mathbb{R}^N$、$\hat{\boldsymbol{y}}\in\mathbb{R}^N$ 分别为 $N$ 个样本的真实标签和预测标签，均方误差定义为</p>
+<p>令 $\boldsymbol{y}\in\mathbb{R}^N$、$\widehat{\boldsymbol{y}}\in\mathbb{R}^N$ 分别为 $N$ 个样本的真实标签和预测标签，均方误差定义为</p>
 
-<p>$$ \mathcal{L}(\boldsymbol{y},\hat{\boldsymbol{y}})=\frac{1}{2N}\|\hat{\boldsymbol{y}}-\boldsymbol{y}\|^2=\frac{1}{2N}\|\boldsymbol{X}\boldsymbol{w}+\boldsymbol{b}-\boldsymbol{y}\|^2, $$</p>
+$$ \mathcal{L}(\boldsymbol{y},\widehat{\boldsymbol{y}})=\frac{1}{2N}\|\widehat{\boldsymbol{y}}-\boldsymbol{y}\|^2=\frac{1}{2N}\|\boldsymbol{X}\boldsymbol{w}+\boldsymbol{b}-\boldsymbol{y}\|^2, $$
 
 <p>其中 $\boldsymbol{b}$ 为所有元素均为 $b$ 的 $N$ 维向量。</p>
 
@@ -382,15 +382,15 @@ tensor([[4.2414],
 
 <p>对均方误差关于 $b$ 求偏导并令其为 $0$，可以解出</p>
 
-<p>$$ b^* = \bar y - \bar{\boldsymbol{x}}^\top \boldsymbol{w}, $$</p>
+$$ b^* = \overline{y} - \overline{\boldsymbol{x}}^\top \boldsymbol{w}, $$
 
-<p>其中 $\bar y$ 和 $\bar{\boldsymbol{x}}$ 分别是标签和特征向量的平均值。把 $b^*$ 代回去再对 $\boldsymbol{w}$ 求偏导，可以解出</p>
+<p>其中 $\overline{y}$ 和 $\overline{\boldsymbol{x}}$ 分别是标签和特征向量的平均值。把 $b^*$ 代回去再对 $\boldsymbol{w}$ 求偏导，可以解出</p>
 
-<p>$$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)\big)^{-1}(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{y}-\bar y). $$</p>
+$$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)^\top(\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)\big)^{-1}(\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)^\top(\boldsymbol{y}-\overline{y}). $$
 
 <p>若加上 $\ell_2$ 正则化（结构风险），最优解变为</p>
 
-<p>$$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)+\lambda \boldsymbol{I}\big)^{-1}(\boldsymbol{X}-\bar{\boldsymbol{x}}^\top)^\top(\boldsymbol{y}-\bar y). $$</p>
+$$ \boldsymbol{w}^* = \big((\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)^\top(\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)+\lambda \boldsymbol{I}\big)^{-1}(\boldsymbol{X}-\overline{\boldsymbol{x}}^\top)^\top(\boldsymbol{y}-\overline{y}). $$
 
 <p>下面把 <code>optimizer_lsm</code> 用 PyTorch 实现出来。</p>
 
